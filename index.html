@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101820"><link rel="manifest" href="manifest.webmanifest">
+<title>مدیریت مدارک دریانوردی</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="brand"><div class="logo">⚓</div><div><h1>مدیریت مدارک دریانوردی</h1><p>بایگانی منظم مدارک بر اساس کشتی</p></div></div><button id="installBtn" class="secondary" hidden>نصب برنامه</button></header>
+<main>
+<section class="stats">
+ <div><strong id="shipCount">۰</strong><span>کشتی ثبت‌شده</span></div>
+ <div><strong id="docCount">۰</strong><span>مدرک ذخیره‌شده</span></div>
+ <div><strong id="soonCount">۰</strong><span>مدرک با انقضای نزدیک</span></div>
+</section>
+<section class="panel">
+ <h2>افزودن کشتی</h2>
+ <form id="shipForm" class="row"><input id="shipName" placeholder="نام کشتی" required><input id="shipType" placeholder="نوع / مشخصات (اختیاری)"><button>ثبت کشتی</button></form>
+</section>
+<section class="panel">
+ <div class="section-head"><h2>کشتی‌ها و مدارک</h2><input id="search" placeholder="جست‌وجو در کشتی‌ها و مدارک…"></div>
+ <div id="ships" class="ships"></div>
+ <p id="empty" class="empty">هنوز کشتی‌ای ثبت نشده است. از بخش بالا اولین کشتی را اضافه کنید.</p>
+</section>
+<section class="panel">
+ <h2>پشتیبان‌گیری و بازیابی</h2>
+ <p class="hint">فایل‌ها فقط در همین مرورگر و روی همین دستگاه ذخیره می‌شوند. برای جلوگیری از ازدست‌رفتن مدارک، مرتباً پشتیبان بگیرید.</p>
+ <div class="row wrap"><button id="backupBtn" class="secondary">دریافت نسخه پشتیبان</button><label class="file-label secondary">بازیابی پشتیبان<input id="restoreInput" type="file" accept=".json"></label></div>
+</section>
+</main>
+<footer>اطلاعات به‌صورت محلی در مرورگر ذخیره می‌شود؛ برای مدارک حساس، از دستگاه امن و نسخه پشتیبان رمزگذاری‌شده استفاده کنید.</footer>
+<dialog id="docDialog"><form id="docForm" method="dialog">
+ <div class="dialog-head"><h2 id="dialogTitle">افزودن مدرک</h2><button type="button" id="closeDialog" class="icon-btn">✕</button></div>
+ <input type="hidden" id="docShipId">
+ <label>عنوان مدرک<input id="docTitle" required placeholder="مثلاً پاسپورت دریایی"></label>
+ <label>دسته‌بندی<select id="docCategory"><option>مدارک هویتی</option><option>گواهینامه‌ها و شایستگی‌ها</option><option>آموزش‌ها و دوره‌ها</option><option>مدارک پزشکی</option><option>قرارداد و استخدام</option><option>سایر</option></select></label>
+ <div class="row"><label>تاریخ صدور<input id="issueDate" type="date"></label><label>تاریخ انقضا<input id="expiryDate" type="date"></label></div>
+ <label>یادداشت<input id="notes" placeholder="توضیحات اختیاری"></label>
+ <label>فایل مدرک (PDF یا تصویر)<input id="docFile" type="file" accept=".pdf,image/*" required></label>
+ <p class="hint" id="fileHint">حداکثر حجم پیشنهادی هر فایل: ۱۵ مگابایت.</p>
+ <button class="full">ذخیره مدرک</button>
+</form></dialog>
+<script src="app.js"></script>
+</body></html>
